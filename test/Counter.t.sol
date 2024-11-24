@@ -33,6 +33,10 @@ contract CounterTest is Test {
         assertEq(counter.number(), 1);
     }
 
+    function testLogSomething() public {
+        console.log("Log something here");
+    }
+
     function testFuzz_SetNumber(uint256 x) public {
         counter.setNumber(x);
         assertEq(counter.number(), x);
