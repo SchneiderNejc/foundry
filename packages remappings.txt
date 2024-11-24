@@ -1,0 +1,12 @@
+install package
+forge install rari-capital/solmate
+
+see installed packages
+forge remappings
+
+remove package
+forge remove solmate
+
+
+install OZ
+npm i @openzeppelin/contracts
