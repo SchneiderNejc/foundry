@@ -35,6 +35,9 @@ contract CounterTest is Test {
 
     function testLogSomething() public {
         console.log("Log something here");
+
+        int x = 1;
+        console.logInt(x);
     }
 
     function testFuzz_SetNumber(uint256 x) public {
