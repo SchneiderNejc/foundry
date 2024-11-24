@@ -13,6 +13,9 @@ contract EventTest is Test {
     }
 
     function testEmitTransferEvent() public {
+        // 1. Declare which data to check.
+        // 2. Emit the xpected event.
+        // 3. Call the function that should emit the event.
         // Check all the indexes.
         vm.expectEmit(true, true, false, true);
         emit Transfer(address(this), address(123), 456);
@@ -24,5 +27,19 @@ contract EventTest is Test {
         evnt.transfer(address(this), address(777), 999);
     }
 
-    function testEmitManyTransferEvent() public {}
+    function testEmitManyTransferEvent() public {
+        address[] memory to = new address[](2);
+        to[1] = address(4565);
+
+        uint[] memory amounts = new uint[](2);
+        amounts[0] = 777;
+        amounts[1] = 888;
+
+        for (uint i; i < to.length; i++) {
+            vm.expectEmit(true, true, false, true);
+            emit Transfer(address(this), to[i], amounts[i]);
+        }
+
+        evnt.transferMany(address(this), to, amounts);
+    }
 }
