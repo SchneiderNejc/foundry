@@ -43,4 +43,11 @@ contract TimeTest is Test {
         rewind(10);
         assertEq(block.timestamp, time + 100 - 10);
     }
+
+    function testBlockNumber() public {
+        // vm.roll - set blocknumber
+        uint blockNumber = block.number;
+        vm.roll(999);
+        assertEq(block.number, 999);
+    }
 }
