@@ -5,7 +5,7 @@ import "forge-std/Test.sol";
 import "forge-std/console.sol";
 import "../src/interfaces/IERC20.sol";
 
-contract ForkTest is Test {
+contract WhaleTest is Test {
     IERC20 public dai;
 
     function setUp() public {
