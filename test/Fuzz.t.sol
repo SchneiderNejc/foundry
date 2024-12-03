@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.20;
+pragma solidity 0.8.27;
 
 import "forge-std/Test.sol";
 import {Bit} from "../src/Bit.sol";
@@ -30,7 +30,7 @@ contract FuzzTest is Test {
         return i;
     }
 
-    function testMostSignificantBitManual() public {
+    function testMostSignificantBitManual() public view {
         assertEq(b.mostSignificantBit(0), 0);
         assertEq(b.mostSignificantBit(1), 0);
         assertEq(b.mostSignificantBit(2), 1);
@@ -39,7 +39,7 @@ contract FuzzTest is Test {
         assertEq(b.mostSignificantBit(type(uint256).max), 255);
     }
 
-    function testMostSignificantBitFuzz(uint256 x) public {
+    function testMostSignificantBitFuzz(uint256 x) public view {
         // assume - If false, the fuzzer will discard the current fuzz inputs
         //          and start a new fuzz run
         // Skip x = 0
@@ -49,8 +49,8 @@ contract FuzzTest is Test {
         // bound(input, min, max) - bound input between min and max
         // Bound
         x = bound(x, 1, 10);
-        // assertGe(x, 1);
-        // assertLe(x, 10);
+        // assertGe(x, 1);  // Greater or equal
+        // assertLe(x, 10); // Less then or equal
 
         uint256 i = b.mostSignificantBit(x);
         assertEq(i, mostSignificantBit(x));
