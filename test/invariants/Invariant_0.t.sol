@@ -34,6 +34,7 @@ contract IntroInvariantTest is Test {
         target = new InvariantIntro();
     }
 
+    // @note Expect fail from func_5().
     function invariant_flag_is_always_false() public {
         assertEq(target.flag(), false);
     }
