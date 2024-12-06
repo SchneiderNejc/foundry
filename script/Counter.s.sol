@@ -1,18 +1,27 @@
-// SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.13;
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.27;
 
-import {Script, console} from "forge-std/Script.sol";
+import "forge-std/Script.sol";
 import {Counter} from "../src/Counter.sol";
 
-contract CounterScript is Script {
-    Counter public counter;
+/*
+source .env
+forge script script/Counter.s.sol:CounterScript --rpc-url $GOERLI_RPC_URL --broadcast --verify -vvvv
+*/
 
+contract CounterScript is Script {
     function setUp() public {}
 
     function run() public {
-        vm.startBroadcast();
+        uint256 privateKey = vm.envUint("DEV_PRIVATE_KEY");
 
-        counter = new Counter();
+        vm.startBroadcast(privateKey);
+
+        Counter counter = new Counter();
+
+        counter.inc();
+        counter.inc();
+        counter.inc();
 
         vm.stopBroadcast();
     }
