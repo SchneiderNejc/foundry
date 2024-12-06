@@ -23,7 +23,7 @@ contract InvariantIntro {
     function func_4() external {}
 
     function func_5() external {
-        flag = true;
+        flag = true; // Fail happens here.
     }
 }
 
