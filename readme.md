@@ -1,53 +1,125 @@
-Format the code
-forge fmt
+# Foundry Training Walkthrough
 
-fork main net
-forge test --fork url <main-net-endpoint> --match-contract Fork -vvv
+---
+
+## **Forge Commands**
+
+### Formatting Code
+
+Run the formatter to ensure consistent code style:
+
+```sh
+`forge fmt`
+```
+
+### Fork Mainnet
+
+Testing contracts with mainnet forking:
+
+```sh
+forge test --fork url --match-contract Fork -vvv
 forge test --fork-url https://eth-mainnet.g.alchemy.com/v2/nPL494gIDwtmnlSo7nqFNvfgf7nlzh6e --match-contract Whale -vvv
+```
 
-------
-DEPLOYING A CONTRACT
+### Deploying a Contract
+
 copy env variables to stack
+
+```sh
 source .env
 forge script script/Token.s.sol:TokenScript
+```
 
 simulate deployment
+
+```sh
 forge script script/Token.s.sol:TokenScript --rpc-url $SEPOLIA_RPC
+```
 
 deploy to sepolia and verify contract
+
+```sh
 forge script script/Token.s.sol:TokenScript --rpc-url $SEPOLIA_RPC --broadcast --verify -vvvv
+```
 
 inspect state variables/functions/interface
-forge inspect src/ocean/Ocean.sol:Ocean storage --pretty
-forge inspect src/ocean/Ocean.sol:Ocean methods --pretty
+
+```sh
+forge inspect src/ocean/Ocean.sol:Ocean storage --pretty forge inspect src/ocean/Ocean.sol:Ocean methods --pretty
 forge inspect src/ocean/Ocean.sol:Ocean abi --pretty > temp.sol
+```
 
+---
 
-# CAST
+## **Cast Commands**
 
-create new wallet
+### Wallet Management
+
+- Create a new wallet
+
+```sh
 cast wallet import wallet1 --private-key $PRIVATE_KEY
+```
 
-get wallets
+- List wallets
+
+```sh
 cast wallet list
+```
 
-remove wallet
-rm -rf ~/.foundry/keystores/wallet1
+- Remove a wallet
 
-set the address for interaction
+```sh
+remove wallet rm -rf ~/.foundry/keystores/wallet1
+```
+
+### Interaction with Contracts
+
+- Set Address for Interaction
+
+```sh
 DST=<address>
+```
 
-set the function for interaction
+- Set Function Signature
+
+```sh
 FUNC_SIG="set(uint256)"
+```
 
-set the arguments for interaction
+- Set Arguments
+
+```sh
 ARGS="888"
+```
 
-set the rpc
+- RPC Configuration
+
+```sh
 RPC=<infura_rpc>
+```
 
-initiate the tx
+- Send a Transaction
+
+```sh
 cast send --account wallet1 --rpc-url $RPCD $DST $FUNC_SIG $ARGS
+```
 
-call a contract function
+- Call a Contract Function
+
+```sh
 cast call --rpc-url $RPC $DST "val()(uint256)"
+```
+
+---
+
+## Sources
+
+This repository and walkthrough are intended for training purposes only. The original repository and video walkthrough can be found below:
+
+- **Original Repo**: [hello-foundry on GitHub](https://github.com/t4sk/hello-foundry)
+- **Video Walkthrough**: [YouTube Playlist](https://www.youtube.com/watch?v=tgs5q-GJmg4&list=PLO5VPQH6OWdUrKEWPF07CSuVm3T99DQki)
+
+The associated repository for this training:
+
+- [Foundry Training Repository](https://github.com/SchneiderNejc/foundry-training)
