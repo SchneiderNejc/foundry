@@ -120,6 +120,10 @@ This repository and walkthrough are intended for training purposes only. The ori
 - **Original Repo**: [hello-foundry on GitHub](https://github.com/t4sk/hello-foundry)
 - **Video Walkthrough**: [YouTube Playlist](https://www.youtube.com/watch?v=tgs5q-GJmg4&list=PLO5VPQH6OWdUrKEWPF07CSuVm3T99DQki)
 
+The methodology used stems from best practices, as demonstrated at Solidity-by-example.
+
+- **Initial lessons**: [solidity-by-example](https://solidity-by-example.org/)
+
 The associated repository for this training:
 
 - [Foundry Training Repository](https://github.com/SchneiderNejc/foundry-training)
